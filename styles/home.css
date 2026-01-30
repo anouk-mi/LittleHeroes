@@ -1,0 +1,318 @@
+/* Home Page Specific Styles */
+
+/* Header Image and TabsSection */
+.header-image-section {
+  padding-top: 70px;
+  overflow-x: auto;
+  display: flex;
+  justify-content: center;
+}
+
+.header-image-section img {
+  width: 100%;
+  max-width: 1920px;
+  height: auto;
+  display: block;
+}
+
+/* Introductive Main Content Area */
+.introduction-section {
+  padding: 60px 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+/* Learn from the Greats Section */
+.greats-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 900px;
+  position: relative;
+}
+
+.greats-container {
+  position: relative;
+  width: 100%;
+  max-width: 1200px;
+  min-height: 600px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.greats-container img {
+  width: 70%;
+}
+
+/* Central Child */
+/*
+.central-child {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+}
+
+.child-portrait {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background-color: #4ecdc4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 8px solid #ffeb3b;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.placeholder-portrait {
+  font-size: 120px;
+  line-height: 1;
+} 
+  */
+
+/* Figures Circle */
+/*
+.figures-circle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 600px;
+  height: 600px;
+  z-index: 5;
+}
+
+.figure-portrait {
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 48px;
+  border: 3px solid #ffeb3b;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+*/
+/* Position figures in a perfect circle using trigonometry */
+/* 12 figures evenly spaced = 30 degrees apart (360/12 = 30) */
+/* Radius: 240px from center */
+/* Starting from top (0°) and going clockwise */
+/*
+.figure-portrait.top-left {
+  transform: translate(-50%, -50%) translate(0, -240px);
+}
+
+.figure-portrait.top-center-left {
+  transform: translate(-50%, -50%) translate(120px, -207.8px);
+}
+
+.figure-portrait.upper-mid-left {
+  transform: translate(-50%, -50%) translate(207.8px, -120px);
+}
+
+.figure-portrait.mid-left {
+  transform: translate(-50%, -50%) translate(240px, 0);
+}
+
+.figure-portrait.lower-mid-left {
+  transform: translate(-50%, -50%) translate(207.8px, 120px);
+}
+
+.figure-portrait.bottom-center-left {
+  transform: translate(-50%, -50%) translate(120px, 207.8px);
+}
+
+.figure-portrait.bottom-center-right {
+  transform: translate(-50%, -50%) translate(-120px, 207.8px);
+}
+
+.figure-portrait.bottom-right {
+  transform: translate(-50%, -50%) translate(-207.8px, 120px);
+}
+
+.figure-portrait.lower-mid-right {
+  transform: translate(-50%, -50%) translate(-240px, 0);
+}
+
+.figure-portrait.mid-right {
+  transform: translate(-50%, -50%) translate(-207.8px, -120px);
+}
+
+.figure-portrait.top-center-right {
+  transform: translate(-50%, -50%) translate(-120px, -207.8px);
+}
+
+.figure-portrait.upper-left {
+*/
+/* 30° - top-right */
+/*
+  transform: translate(-50%, -50%) translate(120px, -207.8px);
+}*/
+
+/* Learn Text Sections */
+.learn-text {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 15;
+}
+
+.left-text {
+  left: -250px;
+  text-align: left;
+}
+
+.right-text {
+  right: -250px;
+  text-align: right;
+}
+
+.learn-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.learn-list li {
+  font-size: 30px;
+  line-height: 2;
+  margin-bottom: 8px;
+}
+
+/* Vision Text Section */
+.bottom-section {
+  padding-top: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  min-height: 400px;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .greats-container {
+    max-width: 900px;
+  }
+  /*
+  .figures-circle {
+    width: 500px;
+    height: 500px;
+  }
+
+  .figure-portrait {
+    width: 65px;
+    height: 65px;
+    font-size: 36px;
+  }
+
+  .child-portrait {
+    width: 160px;
+    height: 160px;
+  }
+
+  .placeholder-portrait {
+    font-size: 100px;
+  }
+*/
+  .learn-title {
+    font-size: 28px;
+  }
+
+  .learn-list li {
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 768px) {
+  .header-image-section {
+    padding-top: 70px;
+  }
+
+  .header-image-section img {
+    width: 100%;
+    height: auto;
+  }
+
+  .main-title {
+    font-size: 48px;
+  }
+
+  .introduction-section {
+    padding: 40px 20px;
+  }
+
+  .greats-section {
+    padding: 60px 20px;
+    min-height: 600px;
+  }
+
+  .greats-container {
+    min-height: 500px;
+    flex-direction: column;
+  }
+
+  /*
+  .figures-circle {
+    width: 400px;
+    height: 400px;
+  }
+
+  .figure-portrait {
+    width: 55px;
+    height: 55px;
+    font-size: 32px;
+  }
+
+  .child-portrait {
+    width: 140px;
+    height: 140px;
+  }
+
+  .placeholder-portrait {
+    font-size: 85px;
+  }
+    */
+
+  .learn-text {
+    position: static;
+    transform: none;
+    margin-top: 400px;
+    margin-bottom: 30px;
+  }
+
+  .left-text,
+  .right-text {
+    left: auto;
+    right: auto;
+    text-align: center;
+    width: 100%;
+  }
+
+  .learn-title {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+
+  .learn-list li {
+    font-size: 16px;
+  }
+
+  .bottom-section {
+    padding: 60px 20px;
+    min-height: 300px;
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "purpose": "Tone validation, not tone enforcement",
+  "global_constraints": {
+    "must_be": [
+      "child-friendly",
+      "respectful",
+      "non-judgmental",
+      "emotionally safe"
+    ],
+    "must_not_be": [
+      "sarcastic",
+      "condescending",
+      "threatening",
+      "fear-inducing"
+    ]
+  },
+  "character_tone_binding": {
+    "source": "character.style.tone",
+    "rule": "Response tone must align with the character-defined tone, voice and personality"
+  },
+  "fallback_on_mismatch": {
+    "action": "soft_rewrite",
+    "instruction": "Adjust tone to match character voice and tone while preserving content"
+  }
+}

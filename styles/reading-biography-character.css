@@ -1,0 +1,94 @@
+/* Episodes Page Styles */
+
+.episodes-content {
+  min-height: 100vh;
+  padding-top: 100px;
+  padding-bottom: 60px;
+  padding-left: 40px;
+  padding-right: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.biography-title-box {
+  border: 3px solid black;
+  border-radius: 10px;
+  padding: 20px 40px;
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+.biography-title-box .text-content2 {
+  padding-bottom: 10px;
+}
+
+.episodes-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+  max-width: 1400px;
+  width: 100%;
+}
+
+.episode-box-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.episode-box {
+  border: 3px solid white;
+  border-radius: 10px;
+  padding: 10px;
+  min-height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  cursor: pointer;
+}
+
+.episode-box-link:hover .episode-box {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .episodes-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+  }
+
+  .biography-title-box h1 {
+    font-size: 40px;
+  }
+}
+
+@media (max-width: 768px) {
+  .episodes-content {
+    padding: 30px 20px 40px;
+  }
+
+  .biography-title-box {
+    padding: 15px 30px;
+    margin-bottom: 30px;
+  }
+
+  .biography-title-box h1 {
+    font-size: 32px;
+  }
+
+  .episodes-grid {
+    grid-template-columns: 1fr;
+    gap: 15px;
+    max-width: 500px;
+  }
+
+  .episode-box {
+    padding: 15px;
+    min-height: 100px;
+  }
+}

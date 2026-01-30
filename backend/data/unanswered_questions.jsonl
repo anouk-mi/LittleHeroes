@@ -1,0 +1,3 @@
+
+{"timestamp":"2026-01-29T06:46:45.207Z","character":"leonardo-da-vinci","message":"hey, tell me about your last invention","reason":"model_refusal"}
+{"timestamp":"2026-01-29T06:46:45.210Z","character":"leonardo-da-vinci","message":"hey, tell me about your last invention","reason":"safety_refusal"}

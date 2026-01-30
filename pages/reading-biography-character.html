@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI Greats - Biography Episodes</title>
+    <link rel="stylesheet" href="../styles/main.css" />
+    <link rel="stylesheet" href="../styles/reading-biography-character.css" />
+  </head>
+  <body class="background-green">
+    <!-- Tabs Banner -->
+    <header class="tabs-banner">
+      <nav class="navigation">
+        <a href="home.html" class="tab-link">Home</a>
+        <a href="talk.html" class="tab-link">
+          Talk <span class="icon">🎤</span>
+        </a>
+        <a href="reading-biography.html" class="tab-link active">
+          Reading Biography <span class="icon">📖</span>
+        </a>
+        <a href="plan.html" class="tab-link">Plan</a>
+        <a href="our-vision.html" class="tab-link">Our vision</a>
+        <div class="logo-icon">
+          <img src="../images/corner_icon.png" alt="AI Smiley Icon" />
+        </div>
+      </nav>
+    </header>
+
+    <!-- Page Content -->
+    <main class="episodes-content">
+      <div class="biography-title-box background-lightblue">
+        <h1 class="text-content2" id="biography-title">Loading...</h1>
+      </div>
+
+      <div class="episodes-grid" id="episodes-grid">
+        <!-- Episodes will be dynamically inserted here -->
+      </div>
+    </main>
+
+    <!-- Load episodes data as JavaScript file (works without web server) -->
+    <script src="../data/episodes-titles.js"></script>
+
+    <script>
+      // Character name mapping (from reading-biography.html to JSON keys)
+      const characterMap = {
+        abe: "abe",
+        leo: "leo",
+        al: "al",
+        isac: "isac",
+        socrate: "socrate",
+        willy: "willy",
+        chales: "chales",
+        marie: "marie",
+        hellen: "hellen",
+        wolf: "wolf",
+        charlie: "charlie",
+        andy: "andy",
+      };
+
+      // Get URL parameter
+      function getURLParameter(name) {
+        const urlParams = new URLSearchParams(window.location.search);
+        return urlParams.get(name);
+      }
+
+      // Load and display episodes
+      function loadEpisodes() {
+        const characterParam = getURLParameter("character");
+
+        if (!characterParam) {
+          document.getElementById("biography-title").textContent =
+            "Character not specified";
+          return;
+        }
+
+        const characterKey = characterMap[characterParam.toLowerCase()];
+
+        if (!characterKey) {
+          document.getElementById("biography-title").textContent =
+            "Character not found";
+          return;
+        }
+
+        try {
+          // Episodes data is loaded from episodes-titles.js via script tag
+          // The variable 'episodesData' is now available globally
+          if (typeof episodesData === "undefined") {
+            throw new Error(
+              "Episodes data not loaded. Make sure episodes-titles.js is accessible."
+            );
+          }
+
+          const characterData = episodesData[characterKey];
+
+          if (!characterData) {
+            document.getElementById("biography-title").textContent =
+              "Character data not found";
+            return;
+          }
+
+          // Update title
+          document.getElementById("biography-title").textContent =
+            characterData.fullName + " Biography";
+          document.title = `AI Greats - ${characterData.fullName} Biography`;
+
+          // Clear existing episodes
+          const episodesGrid = document.getElementById("episodes-grid");
+          episodesGrid.innerHTML = "";
+
+          // Create episode boxes
+          characterData.episodes.forEach((episodeTitle, index) => {
+            const episodeBoxLink = document.createElement("a");
+            episodeBoxLink.href = `reading-biography-character-episode.html?character=${characterParam}&episode=${
+              index + 1
+            }`;
+            episodeBoxLink.className = "episode-box-link";
+
+            const episodeBox = document.createElement("div");
+            episodeBox.className = "episode-box background-darkblue";
+            episodeBox.innerHTML = `<p class="text-content3">Episode ${
+              index + 1
+            }: ${episodeTitle}</p>`;
+
+            episodeBoxLink.appendChild(episodeBox);
+            episodesGrid.appendChild(episodeBoxLink);
+          });
+        } catch (error) {
+          console.error("Error loading episodes:", error);
+          document.getElementById("biography-title").textContent =
+            "Error loading episodes";
+          document.getElementById("episodes-grid").innerHTML =
+            "<p style='color: red; text-align: center; padding: 20px;'>" +
+            "Error: " +
+            error.message +
+            "</p>";
+        }
+      }
+
+      // Initialize on page load
+      window.addEventListener("DOMContentLoaded", loadEpisodes);
+
+      // Handle browser back/forward navigation
+      window.addEventListener("popstate", loadEpisodes);
+    </script>
+  </body>
+</html>

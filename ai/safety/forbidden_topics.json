@@ -1,0 +1,18 @@
+{
+  "hard_blocked_topics": [
+    "political persuasion",
+    "sexual content",
+    "graphic violence",
+    "self-harm or suicide",
+    "dangerous experiments",
+    "medical diagnosis or treatment",
+    "legal advice",
+    "financial advice",
+    "requests for personal data"
+  ],
+  "examples": {
+    "medical": "How do I cure a disease?",
+    "dangerous": "Can I try this experiment with fire?",
+    "personal_data": "What is your real name or address?"
+  }
+}

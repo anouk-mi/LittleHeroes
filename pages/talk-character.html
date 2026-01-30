@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI Greats - Talk</title>
+    <link rel="stylesheet" href="../styles/main.css" />
+    <link rel="stylesheet" href="../styles/talk.css" />
+    <link rel="stylesheet" href="../styles/talk-character.css" />
+  </head>
+  <body class="background-red">
+    <!-- Tabs Banner -->
+    <header class="tabs-banner">
+      <nav class="navigation">
+        <a href="home.html" class="tab-link">Home</a>
+        <a href="talk.html" class="tab-link active">
+          Talk <span class="icon">🎤</span>
+        </a>
+        <a href="reading-biography.html" class="tab-link">
+          Reading Biography <span class="icon">📖</span>
+        </a>
+        <a href="plan.html" class="tab-link">Plan</a>
+        <a href="our-vision.html" class="tab-link">Our vision</a>
+        <div class="logo-icon">
+          <img src="../images/corner_icon.png" alt="AI Smiley Icon" />
+        </div>
+      </nav>
+    </header>
+
+    <!-- Page Content -->
+    <main class="character-detail-content">
+      <div class="character-window background-darkblue">
+        <div
+          class="character-name-corner text-card-quality"
+          id="character-name-display"
+        ></div>
+
+        <div class="character-icons-left">
+          <span class="icon">🎤</span>
+          <span class="icon">📢</span>
+        </div>
+
+        <div class="character-icons-right">
+          <span class="icon">📖</span>
+        </div>
+
+        <div class="character-image-container">
+          <img id="character-image-display" src="" alt="" />
+        </div>
+
+        <div class="character-chat">
+          <div id="character-reply" class="character-reply"></div>
+          <div class="character-input-row">
+            <input
+              id="character-input"
+              class="character-input"
+              type="text"
+              placeholder="Type your message..."
+            />
+            <button id="character-send" class="character-send" type="button">
+              Send
+            </button>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <script>
+      // Character data mapping
+      const characters = {
+        abe: {
+          name: "Abe",
+          image: "../images/card_abe.png",
+          imageStyle: "",
+          backendSlug: "abraham-lincoln",
+        },
+        leo: {
+          name: "Leo",
+          image: "../images/card_leo.png",
+          imageStyle: "",
+          backendSlug: "leonardo-da-vinci",
+        },
+        al: {
+          name: "Al",
+          image: "../images/card_al.png",
+          imageStyle: "",
+          backendSlug: "albert-einstein",
+        },
+        ike: {
+          name: "Ike",
+          image: "../images/card_ike.png",
+          imageStyle: "",
+          backendSlug: "isaac-newton",
+        },
+        socrate: {
+          name: "Socrate",
+          image: "../images/card_socrate.png",
+          imageStyle: "transform: scaleX(0.95) scaleY(0.95)",
+          backendSlug: "socrates",
+        },
+        willy: {
+          name: "Willy",
+          image: "../images/card_willy.png",
+          imageStyle: "",
+          backendSlug: "william-shakespeare",
+        },
+        chales: {
+          name: "Chales",
+          image: "../images/card_chales.png",
+          imageStyle: "",
+          backendSlug: "charles-darwin",
+        },
+        marie: {
+          name: "Marie",
+          image: "../images/card_marie.png",
+          imageStyle: "",
+          backendSlug: "marie-curie",
+        },
+        hellen: {
+          name: "Hellen",
+          image: "../images/card_hellen.png",
+          imageStyle: "transform: scaleX(0.9) scaleY(0.9)",
+          backendSlug: "helen-keller",
+        },
+        wolfi: {
+          name: "Wolfi",
+          image: "../images/card_wolfi.png",
+          imageStyle: "",
+          backendSlug: "wolfgang-amadeus-mozart",
+        },
+        chally: {
+          name: "Chally",
+          image: "../images/card_chally.png",
+          imageStyle: "",
+          backendSlug: "charlie-chaplin",
+        },
+        andy: {
+          name: "Andy",
+          image: "../images/card_andy.png",
+          imageStyle: "",
+          backendSlug: "andrew-carnegie",
+        },
+      };
+
+      let currentCharacterKey = null;
+      let currentBackendSlug = null;
+
+      // Get URL parameter
+      function getURLParameter(name) {
+        const urlParams = new URLSearchParams(window.location.search);
+        return urlParams.get(name);
+      }
+
+      // Initialize page based on URL parameter
+      function initializePage() {
+        const characterParam = getURLParameter("character");
+
+        if (characterParam && characters[characterParam.toLowerCase()]) {
+          // Show character detail view
+          const character = characters[characterParam.toLowerCase()];
+          currentCharacterKey = characterParam.toLowerCase();
+          currentBackendSlug = character.backendSlug || "";
+          
+          // Update character name
+          document.getElementById("character-name-display").textContent =
+            character.name;
+
+          // Update character image
+          const imgElement = document.getElementById("character-image-display");
+          imgElement.src = character.image;
+          imgElement.alt = character.name;
+
+          // Apply image style if needed
+          if (character.imageStyle) {
+            imgElement.style.cssText = character.imageStyle;
+          } else {
+            imgElement.style.cssText = "";
+          }
+
+          // Update page title
+          document.title = `AI Greats - Talk with ${character.name}`;
+        } else {
+          // Redirect to talk page if no valid character
+          window.location.href = "talk.html";
+        }
+      }
+
+      // Initialize on page load
+      window.addEventListener("DOMContentLoaded", () => {
+        initializePage();
+        const input = document.getElementById("character-input");
+        const sendButton = document.getElementById("character-send");
+        const reply = document.getElementById("character-reply");
+
+        async function sendMessage() {
+          const text = input.value.trim();
+          if (!text) return;
+          reply.textContent = "Thinking...";
+          const payload = {
+            message: text,
+            character: currentBackendSlug || "",
+          };
+
+          try {
+            const response = await fetch("http://localhost:3001/api/chat", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify(payload),
+            });
+
+            let data = {};
+            try {
+              data = await response.json();
+            } catch {
+              data = {};
+            }
+
+            if (!response.ok) {
+              const errorMessage = data.error || "Server error";
+              throw new Error(errorMessage);
+            }
+
+            reply.textContent = data.answer || "No answer yet.";
+          } catch (error) {
+            const message =
+              error && error.message ? error.message : "Unable to reach the AI server.";
+            reply.textContent = `Error: ${message}`;
+          }
+          input.value = "";
+          input.focus();
+        }
+
+        sendButton.addEventListener("click", sendMessage);
+        input.addEventListener("keydown", (event) => {
+          if (event.key === "Enter") {
+            sendMessage();
+          }
+        });
+      });
+
+      // Also handle browser back/forward navigation
+      window.addEventListener("popstate", initializePage);
+    </script>
+  </body>
+</html>

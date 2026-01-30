@@ -1,0 +1,138 @@
+/* Reading Biography Page Specific Styles */
+
+.biography-content {
+  min-height: 100vh;
+  padding-top: 100px;
+  padding-bottom: 60px;
+  padding-left: 40px;
+  padding-right: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Characters Grid */
+.characters-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 80px 40px;
+  max-width: 1800px;
+  min-width: 950px;
+  width: 100%;
+}
+/* Character Card Link */
+.character-card-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.character-card-link:hover .character-card {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Character Card */
+.character-card {
+  border-radius: 30px;
+  border: 3px solid black;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 200px;
+  max-height: 280px;
+  position: relative;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: visible;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+/* Character Image */
+.character-image {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 55%;
+  max-width: 340px;
+  min-width: 300px;
+  pointer-events: none;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  overflow-x: clip;
+  overflow-y: visible;
+}
+
+.character-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+  max-width: 100%;
+  transform-origin: right bottom;
+  flex-shrink: 0;
+  box-sizing: border-box;
+  object-fit: contain;
+  margin-left: auto;
+}
+
+/* Character Info */
+.character-info {
+  padding: 25px 25px 10px 25px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+/* Character Icons */
+.character-icons {
+  display: flex;
+  gap: 15px;
+  justify-content: flex-start;
+  align-items: center;
+  margin-top: 60px;
+}
+
+.character-icons .icon {
+  font-size: 24px;
+  filter: brightness(0);
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.character-icons .icon:hover {
+  transform: scale(1.1);
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .characters-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+  }
+}
+
+@media (max-width: 768px) {
+  .biography-content {
+    padding: 30px 20px 40px;
+  }
+
+  .characters-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    max-width: 400px;
+  }
+
+  .character-card {
+    min-height: 320px;
+    padding: 15px;
+  }
+
+  .character-image {
+    width: 100px;
+    height: 100px;
+  }
+}

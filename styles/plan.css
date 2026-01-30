@@ -1,0 +1,12 @@
+/* Plan Page Specific Styles */
+
+.page-content {
+  min-height: 100vh;
+  padding-top: 100px;
+  padding-bottom: 60px;
+  padding-left: 40px;
+  padding-right: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

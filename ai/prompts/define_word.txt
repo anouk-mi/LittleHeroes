@@ -1,0 +1,10 @@
+﻿Context:
+{{context}}
+
+Word: {{word}}
+
+Instructions:
+- Define the word using ONLY the Context.
+- If the Context does not define the word, output: {{refusal_text}}
+- Use simple language for children aged 7-10.
+- Give one short example sentence if possible.

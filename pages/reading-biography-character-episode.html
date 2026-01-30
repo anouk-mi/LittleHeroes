@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI Greats - Episode</title>
+    <link rel="stylesheet" href="../styles/main.css" />
+    <link
+      rel="stylesheet"
+      href="../styles/reading-biography-character-episode.css"
+    />
+  </head>
+  <body class="background-green">
+    <!-- Tabs Banner -->
+    <header class="tabs-banner">
+      <nav class="navigation">
+        <a href="home.html" class="tab-link">Home</a>
+        <a href="talk.html" class="tab-link">
+          Talk <span class="icon">🎤</span>
+        </a>
+        <a href="reading-biography.html" class="tab-link active">
+          Reading Biography <span class="icon">📖</span>
+        </a>
+        <a href="plan.html" class="tab-link">Plan</a>
+        <a href="our-vision.html" class="tab-link">Our vision</a>
+        <div class="logo-icon">
+          <img src="../images/corner_icon.png" alt="AI Smiley Icon" />
+        </div>
+      </nav>
+    </header>
+
+    <!-- Page Content -->
+    <main class="episode-content">
+      <div class="episode-header">
+        <h1 id="episode-title" class="text-content2 text-content-lightblue">
+          Loading...
+        </h1>
+      </div>
+
+      <div class="episode-body">
+        <div class="episode-text-column">
+          <div id="episode-text-content" class="episode-text">
+            <!-- Text content will be loaded here -->
+          </div>
+        </div>
+
+        <div class="episode-image-column">
+          <div class="episode-image-container">
+            <img id="episode-image" src="" alt="Episode illustration" />
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Load episodes data -->
+    <script src="../data/episodes-titles.js"></script>
+
+    <script>
+      // Character name mapping
+      const characterMap = {
+        abe: "abe",
+        leo: "leo",
+        al: "al",
+        isac: "isac",
+        socrate: "socrate",
+        willy: "willy",
+        chales: "chales",
+        marie: "marie",
+        hellen: "hellen",
+        wolf: "wolf",
+        charlie: "charlie",
+        andy: "andy",
+      };
+
+      // Get URL parameter
+      function getURLParameter(name) {
+        const urlParams = new URLSearchParams(window.location.search);
+        return urlParams.get(name);
+      }
+
+      // Global variable to store loaded content
+      let loadedEpisodeContent = null;
+
+      // Load text content from JavaScript file
+      function loadTextContent(character, episodeNumber, callback) {
+        // Reset the global variable
+        loadedEpisodeContent = null;
+
+        // Create a script element to load the JS file
+        const script = document.createElement("script");
+        script.src = `../data/episode-content/${character}/${episodeNumber}.js`;
+
+        script.onload = function () {
+          if (typeof episodeContent !== "undefined") {
+            loadedEpisodeContent = episodeContent;
+            // Clear the global variable
+            delete window.episodeContent;
+            script.remove();
+            callback(null, loadedEpisodeContent);
+          } else {
+            script.remove();
+            callback(
+              new Error("Episode content not found in loaded file"),
+              null
+            );
+          }
+        };
+
+        script.onerror = function () {
+          script.remove();
+          callback(new Error("Failed to load episode content file"), null);
+        };
+
+        document.head.appendChild(script);
+      }
+
+      // Format text into paragraphs
+      function formatText(text) {
+        const paragraphs = text
+          .split("\n\n")
+          .filter((p) => p.trim().length > 0);
+        return paragraphs
+          .map(
+            (paragraph) => `<p class="text-content3">${paragraph.trim()}</p>`
+          )
+          .join("");
+      }
+
+      // Load and display episode
+      function loadEpisode() {
+        const characterParam = getURLParameter("character");
+        const episodeParam = getURLParameter("episode");
+
+        if (!characterParam || !episodeParam) {
+          document.getElementById("episode-title").textContent =
+            "Character or episode not specified";
+          return;
+        }
+
+        const characterKey = characterMap[characterParam.toLowerCase()];
+        const episodeNumber = parseInt(episodeParam);
+
+        if (!characterKey) {
+          document.getElementById("episode-title").textContent =
+            "Character not found";
+          return;
+        }
+
+        if (!episodesData || !episodesData[characterKey]) {
+          document.getElementById("episode-title").textContent =
+            "Character data not found";
+          return;
+        }
+
+        const characterData = episodesData[characterKey];
+        const episodeTitle = characterData.episodes[episodeNumber - 1];
+
+        if (!episodeTitle) {
+          document.getElementById("episode-title").textContent =
+            "Episode not found";
+          return;
+        }
+
+        // Update title
+        document.getElementById(
+          "episode-title"
+        ).textContent = `Episode ${episodeNumber}) ${episodeTitle}`;
+        document.title = `AI Greats - ${characterData.fullName} - ${episodeTitle}`;
+
+        // Load text content
+        loadTextContent(characterKey, episodeNumber, (error, textContent) => {
+          if (error) {
+            console.error("Error loading text content:", error);
+            document.getElementById("episode-text-content").innerHTML =
+              "<p class='text-content3'>Content not available for this episode. Error: " +
+              error.message +
+              "</p>";
+          } else {
+            document.getElementById("episode-text-content").innerHTML =
+              formatText(textContent);
+          }
+        });
+
+        // Set image (you can customize image paths based on character and episode)
+        const imageElement = document.getElementById("episode-image");
+        // Image format: character-episode-Number (e.g., abe-episode-1.png)
+        // Try both .png and .jpg extensions
+        const imagePath = `../images/episodes-images/${characterKey}-episode-${episodeNumber}`;
+        imageElement.src = `${imagePath}.png`;
+        imageElement.alt = `${episodeTitle} illustration`;
+        imageElement.onerror = function () {
+          // Try .jpg if .png fails
+          this.src = `${imagePath}.jpg`;
+          this.onerror = function () {
+            // Hide image if both formats fail
+            this.style.display = "none";
+          };
+        };
+      }
+
+      // Initialize on page load
+      window.addEventListener("DOMContentLoaded", loadEpisode);
+
+      // Handle browser back/forward navigation
+      window.addEventListener("popstate", loadEpisode);
+    </script>
+  </body>
+</html>

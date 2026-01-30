@@ -1,0 +1,90 @@
+{
+  "character_id": "leonardo_da_vinci",
+  "character": {
+    "name": "Leo",
+    "iconic_virtue": "Creativity"
+  },
+  "episodes": [
+    {
+      "id": "ldv-01",
+      "episode_no": 1,
+      "title": "The Boy Who Wrote Backwards",
+      "fact_keyword": "Mirror writing",
+      "fact": "Leonardo enjoyed seeing things differently by practicing mirror-reversed writing.",
+      "quote": "When you see the world differently, new ideas appear.",
+      "value": "Creativity",
+      "story": "By writing backwards, he learns that familiar things can look new, opening the door to creative thinking.",
+      "coach_line": "Seeing differently is where creativity begins.",
+      "daily_mission": "Try taking a different route home today. Talk about what looked new.",
+      "rag_keywords": [
+        "Creativity",
+        "Mirror writing",
+        "Leonardo",
+        "Seeing differently"
+      ]
+    },
+    {
+      "id": "ldv-02",
+      "episode_no": 2,
+      "title": "Little Wings in the Forest",
+      "fact_keyword": "Bird observation",
+      "fact": "He spent long hours observing birds flapping their wings in the forest and dreamed of flying.",
+      "quote": "One day, I want to fly too.",
+      "value": "Curiosity",
+      "story": "By observing nature, he grows his imagination and questions about flight.",
+      "coach_line": "When you look closely at nature, ideas grow.",
+      "daily_mission": "Watch a bird flying in the sky for one minute and share what you noticed.",
+      "rag_keywords": [
+        "Curiosity",
+        "Bird observation",
+        "Leonardo",
+        "Creativity",
+        "Seeing differently"
+      ]
+    },
+    {
+      "id": "ldv-03",
+      "episode_no": 3,
+      "title": "The Curious Apprentice",
+      "fact_keyword": "Apprenticeship",
+      "fact": "At Verrocchio’s workshop, he constantly asked questions about tools and machines.",
+      "quote": "Why does this move like that?",
+      "value": "Inquiry",
+      "story": "He discovers new possibilities by examining the structure and function of small tools.",
+      "coach_line": "If you look closely at small things, they can inspire big ideas.",
+      "daily_mission": "Observe one object at home and write down something you would like to improve.",
+      "rag_keywords": [
+        "Inquiry",
+        "Apprenticeship",
+        "Leonardo",
+        "Creativity",
+        "Seeing differently"
+      ]
+    },
+
+    {
+      "id": "ldv-04",
+      "episode_no": 4,
+      "title": "The Eye of Anatomy",
+      "fact_keyword": "Anatomical sketches",
+      "fact": "He dissected chickens and animals to record bones and muscles.",
+      "quote": "There is order beneath the surface.",
+      "value": "Courage",
+      "story": "By overcoming fear, he learns to draw based on what lies beneath.",
+      "coach_line": "Don’t just look at the outside—imagine what’s inside.",
+      "daily_mission": "Cut a fruit in half and draw what you see inside.",
+      "rag_keywords": [
+        "Courage",
+        "Anatomical sketches",
+        "Leonardo",
+        "Creativity",
+        "Seeing differently"
+      ]
+    }
+  ],
+  "qa_seed": [
+        "What did Leonardo see differently today?",
+        "What choice would you have made?",
+        "What do you need for today’s mission?"
+      ]
+}

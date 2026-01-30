@@ -1,0 +1,11 @@
+﻿Context:
+{{context}}
+
+Question:
+{{question}}
+
+Instructions:
+- Answer ONLY with facts from the Context.
+- If the Context still does not contain the answer after clarifying the question, output: {{refusal_text}}
+- Keep the answer short and child-friendly.
+- If needed, add one short sentence that highlights a value or lesson from the context.
