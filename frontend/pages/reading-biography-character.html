@@ -57,6 +57,22 @@
         andy: "andy",
       };
 
+      // Episode availability (set to true to enable)
+      const episodeAvailability = {
+        abe: { 1: true },
+        leo: {},
+        al: {},
+        isac: {},
+        socrate: {},
+        willy: {},
+        chales: {},
+        marie: {},
+        hellen: {},
+        wolf: {},
+        charlie: {},
+        andy: {},
+      };
+
       // Get URL parameter
       function getURLParameter(name) {
         const urlParams = new URLSearchParams(window.location.search);
@@ -109,20 +125,28 @@
 
           // Create episode boxes
           characterData.episodes.forEach((episodeTitle, index) => {
+            const availabilityForCharacter =
+              episodeAvailability[characterKey] || {};
+            const episodeNumber = index + 1;
+            const isAvailable = availabilityForCharacter[episodeNumber] === true;
             const episodeBoxLink = document.createElement("a");
-            episodeBoxLink.href = `reading-biography-character-episode.html?character=${characterParam}&episode=${
-              index + 1
-            }`;
+            episodeBoxLink.href = `reading-biography-character-episode.html?character=${characterParam}&episode=${episodeNumber}`;
             episodeBoxLink.className = "episode-box-link";
 
             const episodeBox = document.createElement("div");
             episodeBox.className = "episode-box background-darkblue";
             episodeBox.innerHTML = `<p class="text-content3">Episode ${
-              index + 1
+              episodeNumber
             }: ${episodeTitle}</p>`;
 
             episodeBoxLink.appendChild(episodeBox);
             episodesGrid.appendChild(episodeBoxLink);
+
+            if (!isAvailable) {
+              episodeBoxLink.classList.add("unavailable");
+              episodeBoxLink.setAttribute("aria-disabled", "true");
+              episodeBoxLink.removeAttribute("href");
+            }
           });
         } catch (error) {
           console.error("Error loading episodes:", error);

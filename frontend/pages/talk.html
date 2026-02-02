@@ -34,7 +34,11 @@
 
         <div class="characters-grid">
           <!-- Character Card 1 -->
-          <a href="talk-character.html?character=abe" class="character-card-link">
+          <a
+            href="talk-character.html?character=abe"
+            class="character-card-link"
+            data-character="abe"
+          >
             <div class="character-card background-darkblue">
               <div class="character-info">
                 <div class="text-card-quality">Honesty</div>
@@ -52,7 +56,11 @@
           </a>
 
           <!-- Character Card 2 -->
-          <a href="talk-character.html?character=leo" class="character-card-link">
+          <a
+            href="talk-character.html?character=leo"
+            class="character-card-link"
+            data-character="leo"
+          >
             <div class="character-card background-pink">
               <div class="character-info">
                 <div class="text-card-quality">Creativity</div>
@@ -70,7 +78,11 @@
           </a>
 
           <!-- Character Card 3 -->
-          <a href="talk-character.html?character=al" class="character-card-link">
+          <a
+            href="talk-character.html?character=al"
+            class="character-card-link"
+            data-character="al"
+          >
             <div class="character-card background-yellow">
               <div class="character-info">
                 <div class="text-card-quality">Imagination</div>
@@ -88,7 +100,11 @@
           </a>
 
           <!-- Character Card 4 -->
-          <a href="talk-character.html?character=ike" class="character-card-link">
+          <a
+            href="talk-character.html?character=ike"
+            class="character-card-link"
+            data-character="ike"
+          >
             <div class="character-card background-green">
               <div class="character-info">
                 <div class="text-card-quality">Logical thinking</div>
@@ -106,7 +122,11 @@
           </a>
 
           <!-- Character Card 5 -->
-          <a href="talk-character.html?character=socrate" class="character-card-link">
+          <a
+            href="talk-character.html?character=socrate"
+            class="character-card-link"
+            data-character="socrate"
+          >
             <div class="character-card background-orange">
               <div class="character-info">
                 <div class="text-card-quality">Asking</div>
@@ -128,7 +148,11 @@
           </a>
 
           <!-- Character Card 6 -->
-          <a href="talk-character.html?character=willy" class="character-card-link">
+          <a
+            href="talk-character.html?character=willy"
+            class="character-card-link"
+            data-character="willy"
+          >
             <div class="character-card background-lightblue">
               <div class="character-info">
                 <div class="text-card-quality">Expressing</div>
@@ -146,7 +170,11 @@
           </a>
 
           <!-- Character Card 7 -->
-          <a href="talk-character.html?character=chales" class="character-card-link">
+          <a
+            href="talk-character.html?character=chales"
+            class="character-card-link"
+            data-character="chales"
+          >
             <div class="character-card background-yellow">
               <div class="character-info">
                 <div class="text-card-quality">Curiosity</div>
@@ -164,7 +192,11 @@
           </a>
 
           <!-- Character Card 8 -->
-          <a href="talk-character.html?character=marie" class="character-card-link">
+          <a
+            href="talk-character.html?character=marie"
+            class="character-card-link"
+            data-character="marie"
+          >
             <div class="character-card background-darkblue">
               <div class="character-info">
                 <div class="text-card-quality">Patience</div>
@@ -182,7 +214,11 @@
           </a>
 
           <!-- Character Card 9 -->
-          <a href="talk-character.html?character=hellen" class="character-card-link">
+          <a
+            href="talk-character.html?character=hellen"
+            class="character-card-link"
+            data-character="hellen"
+          >
             <div class="character-card background-green">
               <div class="character-info">
                 <div class="text-card-quality">Effort</div>
@@ -204,7 +240,11 @@
           </a>
 
           <!-- Character Card 10 -->
-          <a href="talk-character.html?character=wolfi" class="character-card-link">
+          <a
+            href="talk-character.html?character=wolfi"
+            class="character-card-link"
+            data-character="wolfi"
+          >
             <div class="character-card background-pink">
               <div class="character-info">
                 <div class="text-card-quality">Inspiration</div>
@@ -222,7 +262,11 @@
           </a>
 
           <!-- Character Card 11 -->
-          <a href="talk-character.html?character=chally" class="character-card-link">
+          <a
+            href="talk-character.html?character=chally"
+            class="character-card-link"
+            data-character="chally"
+          >
             <div class="character-card background-lightblue">
               <div class="character-info">
                 <div class="text-card-quality">Humor</div>
@@ -240,7 +284,11 @@
           </a>
 
           <!-- Character Card 12 -->
-          <a href="talk-character.html?character=andy" class="character-card-link">
+          <a
+            href="talk-character.html?character=andy"
+            class="character-card-link"
+            data-character="andy"
+          >
             <div class="character-card background-orange">
               <div class="character-info">
                 <div class="text-card-quality">Finances</div>
@@ -264,6 +312,35 @@
         </h1>
       </div>
 
+      <script>
+        const availabilityMap = {
+          abe: false,
+          leo: true,
+          al: false,
+          ike: false,
+          socrate: false,
+          willy: false,
+          chales: false,
+          marie: false,
+          hellen: false,
+          wolfi: false,
+          chally: false,
+          andy: false,
+        };
+
+        document.querySelectorAll(".character-card-link").forEach((link) => {
+          const id = link.dataset.character;
+          const isAvailable =
+            Object.prototype.hasOwnProperty.call(availabilityMap, id) &&
+            availabilityMap[id];
+
+          if (!isAvailable) {
+            link.classList.add("unavailable");
+            link.setAttribute("aria-disabled", "true");
+            link.removeAttribute("href");
+          }
+        });
+      </script>
     </main>
   </body>
 </html>

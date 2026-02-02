@@ -92,6 +92,8 @@ html {
   position: absolute;
   right: 0px;
   top: 3px;
+  padding-right: 5px;
+  padding-top: 5px;
   cursor: pointer;
 }
 
@@ -99,7 +101,7 @@ html {
   height: auto;
   display: block;
   transform-origin: right top;
-  --logo-scale: 0.3;
+  --logo-scale: 0.25;
   transform: scale(var(--logo-scale));
 }
 
