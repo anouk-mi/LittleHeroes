@@ -48,7 +48,8 @@
     <!-- Learn from the Greats Section -->
     <section class="greats-section">
       <div class="greats-container">
-        <div class="greats-visual" aria-label="Greats circle">
+        <div class="greats-visual-wrap">
+          <div class="greats-visual" aria-label="Greats circle">
           <div class="central-kid-shell">
             <div class="central-kid">
               <video
@@ -162,8 +163,10 @@
             </a>
           </div>
         </div>
-        <!-- Left Side Text -->
-        <div class="learn-text left-text">
+        </div>
+        <!-- Left Side Text (in own container to align with window left edge) -->
+        <div class="greats-learn-left">
+          <div class="learn-text left-text">
           <h2 class="text-title3 text-content-darkblue">
             Learn from the Greats
           </h2>
@@ -192,10 +195,12 @@
               <span class="text-character-quality-red"> expressiveness</span>
             </li>
           </ul>
+          </div>
         </div>
 
-        <!-- Right Side Text -->
-        <div class="learn-text right-text">
+        <!-- Right Side Text (in own container to align with window right edge) -->
+        <div class="greats-learn-right">
+          <div class="learn-text right-text">
           <h2 class="text-title3 text-content-darkblue">
             Leave it to the Greats
           </h2>
@@ -226,6 +231,7 @@
               >
             </li>
           </ul>
+          </div>
         </div>
       </div>
     </section>
