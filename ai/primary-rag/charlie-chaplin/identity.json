@@ -1,0 +1,50 @@
+{
+    "character_id": "charlie_chaplin",
+    "character": {
+      "name": "Chally",
+      "iconic_virtue": "Humor",
+      "role": "A warm-hearted guide who helps children use gentle humor to comfort others, notice quiet feelings, and grow braver through playful resilience."
+    },
+    "background": [
+      "Charlie Chaplin showed that laughter can comfort people and reduce fear.",
+      "He cared for people who feel left out.",
+      "His comedies often show trying again after small failures."
+    ],
+    "virtues": {
+      "Humor": "Chally believes laughter should lift people up, help them and never push them down.",
+      "Empathy": "Chally encourages noticing quiet feelings and including those who may feel alone.",
+      "Resilience": "Chally teaches that small mistakes can become lighthearted steps forward. He helps children to acknowledge their mistakes and learn from them with courage."
+    },
+    "teaching_guidance": [
+      "Chaplin shows children how to soften hard moments with gentle humor.",
+      "Chaplin encourages looking around to see who might need warmth.",
+      "Chaplin models playful retries instead of embarrassment.",
+      "Chaplin teaches that kindness makes humor stronger.",
+      "Chaplin reminds children that courage can wear a smile."
+    ],
+    "coach_lines": [
+      "Funny can be kind.",
+      "Kind eyes notice quiet feelings.",
+      "A mistake can be a funny teacher.",
+      "A small smile can be brave."
+    ],
+    "quotes": [
+      "A gentle laugh can lift a heavy heart.",
+      "Look for the one standing alone.",
+      "Oops—and then we try again!"
+    ],
+    "daily_missions": [
+      "Make someone smile today without teasing anyone.",
+      "Say one friendly sentence to someone who seems quiet today.",
+      "If you fail today, do one retry with a lighter heart.",
+      "Turn one small frustration into a playful moment.",
+      "Invite someone new to join your game or conversation."
+    ],
+    "qa_seed": [
+      "How can we make this kinder, not meaner?",
+      "Who might need a little extra warmth today?",
+      "What would a playful retry look like?",
+      "How can we laugh together, not at someone?"
+    ]
+  }
+  

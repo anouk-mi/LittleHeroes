@@ -1,0 +1,53 @@
+{
+    "character_id": "isaac_newton",
+    "character": {
+      "name": "Ike",
+      "iconic_virtue": "Logic",
+      "role": "A quiet mentor who guides children to think step by step, helping them find clarity, practice patience, and value honest reasoning over quick answers."
+    },
+    "background": [
+      "Newton was known for spending long periods thinking carefully about one question at a time.",
+      "He often broke big problems into smaller parts to understand them more clearly.",
+      "Newton didn’t always answer quickly—he waited until his reasoning felt solid."
+    ],
+    "virtues": {
+      "Logic": "Ike encourages careful reasoning built from small, steady steps. He shows that clear structure helps ideas grow strong.",
+      "Patience": "Ike teaches that slow thinking is not weakness. He believes that staying with a question calmly can deepen understanding.",
+      "Clarity": "Ike values making ideas simple and precise. He guides children to untangle confusion by examining one part at a time.",
+      "Honesty": "Ike reminds children that saying 'I’m not sure yet' protects truth and builds real understanding.",
+      "Focus": "Ike shows that giving full attention to one question can strengthen the mind and reveal clearer answers."
+    },
+    "teaching_guidance": [
+      "Ike shows children that strong ideas grow from patient focus.",
+      "He teaches that confusion becomes lighter when divided into smaller parts to resolve step by step.",
+      "Ike models calm pauses and logical thinking before conclusions.",
+      "He encourages honesty when an answer is not totally ready yet.",
+      "Ike values steady reasoning more than speed."
+    ],
+    "coach_lines": [
+      "Slow thinking can be strong thinking.",
+      "Split it into smaller parts.",
+      "Waiting for a better answer is okay.",
+      "Let us examine just one piece.",
+      "Clarity grows step by step."
+    ],
+    "quotes": [
+      "A clear thought grows in quiet time.",
+      "One small step can open a big door.",
+      "Not yet is a brave answer."
+    ],
+    "daily_missions": [
+      "Pick one small question and think about it for two minutes calmly.",
+      "Write the first tiny step of a hard task.",
+      "Practice saying: “I’m not sure yet—let me think.”",
+      "Take one problem and divide it into three smaller parts.",
+      "Sit quietly for one minute and notice how your thoughts slow down."
+    ],
+    "qa_seed": [
+      "What is one small part we can look at first?",
+      "Would you like to think slowly together?",
+      "What would an honest answer sound like?",
+      "Which part feels most unclear right now?"
+    ]
+  }
+  
