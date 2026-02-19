@@ -1,11 +1,121 @@
 /* Home Page Specific Styles */
+/* Header rectangle: same size and color gradient as previous header image background */
+.header-rectangle {
+  width: 100%;
+  margin-top: 70px;
+  aspect-ratio: 1920 / 420;
+  background: #15fa62;
+  background-image: linear-gradient(
+    to bottom,
+    #15FA61 20%,
+    #20FF8D 60%,
+    #27FFA6,
+    #32FFBC
+  );
+  display: block;
+  position: relative;
+}
 
-/* Header Image and TabsSection */
-.header-image-section {
-  padding-top: 70px;
-  overflow-x: hidden;
-  display: flex;
-  justify-content: center;
+/* Throne image: centered horizontally, bottom edge aligned with rectangle bottom, height matches rectangle */
+.header-throne-image {
+  position: absolute;
+  z-index: 1;
+  left: 50%;
+  bottom: 3px;
+  transform: translateX(-50%);
+  height: 97%;
+  max-height: 97%;
+  width: auto;
+  max-width: 97%;
+  object-fit: contain;
+  display: block;
+}
+
+/* Fade-in animation for adult images */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Adult images: bottom edge aligned, height matches rectangle, horizontal position adjustable (default: 0) */
+.header-adult-image {
+  position: absolute;
+  left: 0;
+  bottom: 3px;
+  height: 97%;
+  max-height: 97%;
+  width: auto;
+  max-width: 97%;
+  object-fit: contain;
+  display: block;
+  opacity: 0;
+  animation: fadeIn 2s ease-in-out forwards;
+}
+
+/* Individual adult image positions - adjust left values as needed */
+/* Animation delay: adjust animation-delay value for each image (default: 0) */
+.header-adult-image[data-adult="lincoln"] {
+  left: -7vw;
+  animation-delay: 0s;
+}
+
+.header-adult-image[data-adult="newton"] {
+  left: 7vw;
+  animation-delay: 0.7s;
+}
+
+.header-adult-image[data-adult="einstein"] {
+  left: -14vw;
+  animation-delay: 1.2s;
+}
+
+.header-adult-image[data-adult="carnegie"] {
+  left: 14.5vw;
+  animation-delay: 1.7s;
+}
+
+.header-adult-image[data-adult="socrate"] {
+  left: -22.5vw;
+  animation-delay: 2.2s;
+}
+
+.header-adult-image[data-adult="marie"] {
+  left: 21vw;
+  animation-delay: 2.7s;
+}
+
+.header-adult-image[data-adult="leonard"] {
+  left: -29vw;
+  animation-delay: 3.2s;
+}
+
+.header-adult-image[data-adult="helen"] {
+  left: 28.5vw;
+  animation-delay: 3.7s;
+}
+
+.header-adult-image[data-adult="shakespeare"] {
+  left: -36vw;
+  animation-delay: 4.2s;
+}
+
+.header-adult-image[data-adult="mozart"] {
+  left: 36.5vw;
+  animation-delay: 4.7s;
+}
+
+.header-adult-image[data-adult="darwin"] {
+  left: -43.5vw;
+  animation-delay: 5.2s;
+}
+
+.header-adult-image[data-adult="charlie"] {
+  left: 43.5vw;
+  animation-delay: 5.7s;
 }
 
 .header-image-section img {
@@ -132,7 +242,7 @@
   width: 140px;
   height: 140px;
   border-radius: 50%;
-  background: linear-gradient(135deg, #15fa62, #30ffbb);
+  background: linear-gradient(135deg, #15FA61, #32FFBC);
   border: 4px solid #ffffff;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
   display: flex;
@@ -176,7 +286,7 @@
 .figure-portrait[data-key="shakespeare"]:focus-visible {
   box-shadow:
     0 0 0 2px rgba(255, 255, 255, 0.9),
-    0 0 30px rgba(192, 75, 32, 1);
+    0 0 40px rgba(192, 75, 32, 1);
 }
 
 .figure-portrait[data-key="darwin"]:hover,
@@ -193,7 +303,7 @@
 .figure-portrait[data-key="carnegie"]:focus-visible {
   box-shadow:
     0 0 0 2px rgba(255, 255, 255, 0.9),
-    0 0 30px rgba(56, 142, 60, 1);
+    0 0 40px rgba(56, 142, 60, 1);
 }
 
 .learn-list li.learn-highlight {
@@ -400,7 +510,7 @@
 /* Responsive: greats circle – fixed size per breakpoint (edit values as needed) */
 @media (max-width: 1250px) {
   .header-image-section {
-    padding-top: 70px;
+    padding-top: 64px;
   }
 
   .header-image-section img {
@@ -490,6 +600,10 @@
 }
 
 @media (max-width: 680px) {
+  .header-rectangle {
+    margin-top: 55px;
+  }
+
   .learn-list li {
     line-height: 1.6;
   }
@@ -512,6 +626,12 @@
 
   .greats-visual {
     transform: translate(-50%, -50%) scale(0.5); /* 380/760 */
+  }
+}
+
+@media (max-width: 480px) {
+  .header-rectangle {
+    margin-top: 45px;
   }
 }
 
