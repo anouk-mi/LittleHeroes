@@ -136,7 +136,7 @@ const episodesData = {
       "Episode 12"
     ]
   },
-  "hellen": {
+  "helen": {
     "fullName": "Helen Keller",
     "episodes": [
       "Episode 1",

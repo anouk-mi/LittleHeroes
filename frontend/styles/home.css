@@ -31,17 +31,30 @@
   display: block;
 }
 
-/* Fade-in animation for adult images */
+/* First appearance: adults fade in (staggered) */
 @keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
-/* Adult images: bottom edge aligned, height matches rectangle, horizontal position adjustable (default: 0) */
+/* Loop: 4s adults → 2.5s crossfade to children → 3s children → 2.5s crossfade to adults (12s cycle) */
+@keyframes adultCycle {
+  0% { opacity: 1; }
+  33.33% { opacity: 1; }   /* 4s hold */
+  54.17% { opacity: 0; }   /* 2.5s crossfade out */
+  79.17% { opacity: 0; }   /* 3s hidden */
+  100% { opacity: 1; }     /* 2.5s crossfade in */
+}
+
+@keyframes childCycle {
+  0% { opacity: 0; }
+  33.33% { opacity: 0; }
+  54.17% { opacity: 1; }   /* 2.5s crossfade in */
+  79.17% { opacity: 1; }   /* 3s hold */
+  100% { opacity: 0; }     /* 2.5s crossfade out */
+}
+
+/* Adult images: bottom edge aligned, height matches rectangle, same padding */
 .header-adult-image {
   position: absolute;
   left: 0;
@@ -53,69 +66,133 @@
   object-fit: contain;
   display: block;
   opacity: 0;
-  animation: fadeIn 2s ease-in-out forwards;
+  animation: fadeIn 2s ease-in-out 0s 1 forwards, adultCycle 12s ease-in-out 7.5s infinite forwards;
+}
+
+/* Child images: same size/position/padding as adults, height matches rectangle, responsive */
+.header-child-image {
+  position: absolute;
+  left: 0;
+  bottom: 3px;
+  height: 97%;
+  max-height: 97%;
+  width: auto;
+  max-width: 97%;
+  object-fit: contain;
+  display: block;
+  opacity: 0;
+  animation: childCycle 12s ease-in-out 7.5s infinite forwards;
 }
 
 /* Individual adult image positions - adjust left values as needed */
-/* Animation delay: adjust animation-delay value for each image (default: 0) */
+/* animation-delay: [stagger for fadeIn], 8.7s (cycle start); comma ensures first anim gets stagger, second gets 8.7s */
 .header-adult-image[data-adult="lincoln"] {
   left: -7vw;
-  animation-delay: 0s;
+  animation-delay: 0s, 7.5s;
 }
 
 .header-adult-image[data-adult="newton"] {
   left: 7vw;
-  animation-delay: 0.7s;
+  animation-delay: 0.7s, 7.5s;
 }
 
 .header-adult-image[data-adult="einstein"] {
   left: -14vw;
-  animation-delay: 1.2s;
+  animation-delay: 1.2s, 7.5s;
 }
 
 .header-adult-image[data-adult="carnegie"] {
   left: 14.5vw;
-  animation-delay: 1.7s;
+  animation-delay: 1.7s, 7.5s;
 }
 
 .header-adult-image[data-adult="socrate"] {
   left: -22.5vw;
-  animation-delay: 2.2s;
+  animation-delay: 2.2s, 7.5s;
 }
 
 .header-adult-image[data-adult="marie"] {
   left: 21vw;
-  animation-delay: 2.7s;
+  animation-delay: 2.7s, 7.5s;
 }
 
 .header-adult-image[data-adult="leonard"] {
   left: -29vw;
-  animation-delay: 3.2s;
+  animation-delay: 3.2s, 7.5s;
 }
 
 .header-adult-image[data-adult="helen"] {
-  left: 28.5vw;
-  animation-delay: 3.7s;
+  left: 28.2vw;
+  animation-delay: 3.7s, 7.5s;
 }
 
 .header-adult-image[data-adult="shakespeare"] {
   left: -36vw;
-  animation-delay: 4.2s;
+  animation-delay: 4.2s, 7.5s;
 }
 
 .header-adult-image[data-adult="mozart"] {
-  left: 36.5vw;
-  animation-delay: 4.7s;
+  left: 36.4vw;
+  animation-delay: 4.7s, 7.5s;
 }
 
 .header-adult-image[data-adult="darwin"] {
   left: -43.5vw;
-  animation-delay: 5.2s;
+  animation-delay: 5.2s, 7.5s;
 }
 
 .header-adult-image[data-adult="charlie"] {
-  left: 43.5vw;
-  animation-delay: 5.7s;
+  left: 43.4vw;
+  animation-delay: 5.7s, 7.5s;
+}
+
+/* Child images: same positions as adults, no stagger (all start cycle at 8.7s together) */
+.header-child-image[data-adult="lincoln"] {
+  left: -7.5vw;
+}
+
+.header-child-image[data-adult="newton"] {
+  left: 7vw;
+}
+
+.header-child-image[data-adult="einstein"] {
+  left: -14.3vw;
+}
+
+.header-child-image[data-adult="carnegie"] {
+  left: 13.9vw;
+}
+
+.header-child-image[data-adult="socrate"] {
+  left: -21vw;
+}
+
+.header-child-image[data-adult="marie"] {
+  left: 20.6vw;
+}
+
+.header-child-image[data-adult="leonard"] {
+  left: -28vw;
+}
+
+.header-child-image[data-adult="helen"] {
+  left: 27.9vw;
+}
+
+.header-child-image[data-adult="shakespeare"] {
+  left: -35vw;
+}
+
+.header-child-image[data-adult="mozart"] {
+  left: 35vw;
+}
+
+.header-child-image[data-adult="darwin"] {
+  left: -42vw;
+}
+
+.header-child-image[data-adult="charlie"] {
+  left: 42vw;
 }
 
 .header-image-section img {
